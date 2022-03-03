@@ -157,8 +157,10 @@ function updatetags_style (data) {
 
 
 $('#result_transfer').on("click", function() {
-  let original_image = document.getElementById('origin_img').src.replace('http://0.0.0.0:8080/', '');
-  let style_image = document.getElementById('style_img').src.replace('http://0.0.0.0:8080/', '');
+  var split_origin_image = document.getElementById('origin_img').src.split('static/upload', 1)[0]
+  var split_style_image = document.getElementById('style_img').src.split('static/upload', 1)[0]
+  let original_image = document.getElementById('origin_img').src.replace(split_origin_image, '');
+  let style_image = document.getElementById('style_img').src.replace(split_style_image, '');
   fetch("/style_transfer?original_path="+original_image+"&style_path="+style_image)
     .then((res) => {
         return res.json(); //Promise 반환
