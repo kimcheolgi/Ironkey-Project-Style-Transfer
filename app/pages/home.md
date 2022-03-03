@@ -1,10 +1,10 @@
 <div id="top">
-<h1>Welcome to Ironkey Project 1</h1>
+<h1>Welcome to Ironkey Project 1 - Style Transfer</h1>
 <p></p>
 <p>
-이곳은 Ironkey 프로젝트 공간입니다.
+This is the Ironkey project space.
 </p>
 <p>
-Style Transfer 모델로 이미지와 스타일을 합성시켜주는 서비스입니다.
+It is a service that synthesizes images and styles with the Style Transfer model. (Only images smaller than 1MB can be uploaded.)
 </p>
 </div>
