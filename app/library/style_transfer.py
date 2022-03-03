@@ -2,13 +2,13 @@ import tensorflow as tf
 import os
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
-import tkinter
+# import tkinter
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 mpl.rcParams['figure.figsize'] = (12, 12)
 mpl.rcParams['axes.grid'] = False
-mpl.use('TkAgg')
+# mpl.use('TkAgg')
 import numpy as np
 import PIL.Image
 
