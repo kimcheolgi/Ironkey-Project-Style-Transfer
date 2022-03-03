@@ -25,4 +25,5 @@ RUN pip install --disable-pip-version-check -r requirements.txt && \
 
 EXPOSE 5000
 
-CMD ["gunicorn", "--preload", "-c", "gunicorn.conf.py", "app.main:create_app()"]
+# CMD ["gunicorn", "--preload", "-c", "gunicorn.conf.py", "app.main:create_app()"]
+CMD ["uvicorn", "app.main:app", "--reload", "--host=0.0.0.0", "--port=5000"]
