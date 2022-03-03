@@ -2,9 +2,9 @@ name: AWS-BeanStalk-Pipeline
 
 env:
   APP_S3_BUCKET_NAME: elasticbeanstalk-ap-northeast-2-842294153166
-  APP_NAME : ironkey-project-1
-  ENV_NAME: Ironkeyproject1-env
-  DEPLOY_PKG_NAME: github-action-ironkey-project-1_${{ github.sha }}.zip
+  APP_NAME : ironkey-project-transfer-style
+  ENV_NAME: Ironkeyprojecttransferstyle-env
+  DEPLOY_PKG_NAME: github-action-ironkey-project-transfer-style_${{ github.sha }}.zip
   AWS_REGION_NAME: ap-northeast-2
 
 on:
