@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Ironkey Project Style Transfer{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+{% include 'include/sidebar.html' %}
+
+
+
+<main role="main" class="container overflow-hidden">
+    <div class="row">
+        {{data.text|safe}}
+    </div>
+    <div class="row">
+
+        <div class="col-md-4 col-0 text-center">
+            <div class="col-12 up-area">
+                <h1>Origin Image</h1>
+                <input type="file" name="file" id="file">
+                <!-- Drag and Drop container-->
+                <div class="upload-area" id="uploadfile">
+                    <h2 id="howto">Drag and Drop file here<br />Or<br />Click to Upload</h2>
+                    <button type="submit" class="box_button">Upload</button>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="colorpalette">
+                    <h3>Uploaded Image</h3>
+                    <div id="result" class="row">
+                        <div id="original" class="col-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-0 text-center" >
+            <div class="col-12 up-area">
+                <h1>Style Image</h1>
+                <input type="file" name="file" id="file_style">
+                <!-- Drag and Drop container-->
+                <div class="upload-area" id="uploadfile_style">
+                    <h2 id="howto_style">Drag and Drop file here<br />Or<br />Click to Upload</h2>
+                    <button type="submit" class="box_button">Upload</button>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="colorpalette">
+                    <h3>Uploaded Image</h3>
+                    <div id="result_style" class="row">
+                        <div id="original_style" class="col-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-0 text-center" >
+            <div class="col-12 up-area">
+                <h1>Transfer Image</h1>
+                <div class="upload-area" id="result_transfer">
+                    <h2>Click to Result<br /></h2>
+                    <button type="submit" class="box_button">Result</button>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="colorpalette">
+                    <h3>Result Image</h3>
+                    <div id="result_transfer_image" class="row">
+                        <div id="result_original_image" class="col-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</main><!-- /.container -->
+
+{{data.page}}
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+<script type="module" src="{{ url_for('static', path='/js/dragdrop.js') }}"></script>
+
+{% endblock %}
