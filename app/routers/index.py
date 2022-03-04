@@ -5,6 +5,7 @@ from app.library.helpers import *
 from app.library.style_transfer import save_style_transfer_image
 
 import shutil
+from pydantic.main import BaseModel
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates/")
@@ -16,7 +17,12 @@ async def home(request: Request):
     return templates.TemplateResponse("page.html", {"request": request, "data": data})
 
 
-@router.post("/upload/new/")
+class UploadedData(BaseModel):
+    img_path: str
+    thumb_path: str
+
+
+@router.post("/upload/new/", response_model=UploadedData)
 async def post_upload(imgdata: tuple, file: UploadFile = File(...)):
     data_dict = eval(imgdata[0])
     winWidth, imgWidth, imgHeight = data_dict["winWidth"], data_dict["imgWidth"], data_dict["imgHeight"]
@@ -37,19 +43,20 @@ async def post_upload(imgdata: tuple, file: UploadFile = File(...)):
     filepath, ext = os.path.splitext(img_full_path)
     thumb_path = filepath + ".thumbnail"+ext
 
-    data = {
-        "img_path": img_full_path,
-        "thumb_path": thumb_path
-    }
-    return data
+    return UploadedData(
+        img_path=str(img_full_path),
+        thumb_path=str(thumb_path)
+    )
 
 
-@router.get("/style_transfer")
+class TransferData(BaseModel):
+    result: str
+
+
+@router.get("/style_transfer", response_model=TransferData)
 async def style_transfer(original_path: str, style_path: str):
     transfer_path = save_style_transfer_image(content_path=original_path, style_path=style_path)
     shutil.rmtree(original_path.replace(original_path.split('/')[-1], ''))
     shutil.rmtree(style_path.replace(style_path.split('/')[-1], ''))
-    data = {
-        'result': transfer_path
-    }
-    return data
+
+    return TransferData(result=str(transfer_path))
