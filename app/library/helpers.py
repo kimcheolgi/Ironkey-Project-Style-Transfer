@@ -29,7 +29,7 @@ def openfile(filename):
     return data
 
 
-def setdimensions(winWidth, imgWidth, imgHeight):
+def set_dimensions(winWidth, imgWidth, imgHeight):
     ratio = winWidth / imgWidth
     new_imgWidth = int(imgWidth * ratio * 0.8)
     max_imgWidth = settings.max_imgWidth
@@ -58,7 +58,7 @@ def create_workspace():
 
 
 def thumb(myfile, winWidth, imgWidth, imgHeight):
-    size = setdimensions(winWidth, imgWidth, imgHeight)
+    size = set_dimensions(winWidth, imgWidth, imgHeight)
     # size = settings.thumb_width, settings.thumb_height
     filepath, ext = os.path.splitext(myfile)
     # print(ext)
